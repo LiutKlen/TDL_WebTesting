@@ -1,41 +1,39 @@
-const { $ } = require('@wdio/globals')
-const Page = require('./page');
-
-/**
- * sub page containing specific selectors and methods for a specific page
- */
-class LoginPage extends Page {
-    /**
-     * define selectors using getter methods
-     */
-    get inputUsername () {
-        return $('#username');
+import BasePage from "./base.page.js";
+export default class LoginPage extends BasePage {
+    constructor() {
+        super();
     }
 
-    get inputPassword () {
-        return $('#password');
+    get title(){
+        return browser.$(`//h1[text()="Login"]`);
+    }
+    
+    get inputEmail() {
+        return browser.$(`#email`);
     }
 
-    get btnSubmit () {
-        return $('button[type="submit"]');
+    get inputPassword() {
+        return browser.$(`#password`);
     }
 
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    async login (username, password) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+    get linkForgotPassword() {
+        return browser.$(`.primary-link.forgot.pw`);
     }
 
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    open () {
-        return super.open('login');
+    get checkboxLabelRememberMe() {
+        return browser.$(['for="rememberMe-input"]']);
+    }
+
+    get linkRegister() {
+        return browser.$(`[routerlink="/register"]`);
+    }
+
+    async waitForLoad(email, password) {
+        await this.title.waitForDisplayed();
+        await this.inputEmail.waitForDisplayed();
+        await this.inputPassword.waitForDisplayed();
+        await this.linkForgotPassword.waitForDisplayed();
+        await this.checkboxLabelRememberMe.waitForDisplayed();
+        await this.linkRegister.waitForDisplayed();
     }
 }
-
-module.exports = new LoginPage();
