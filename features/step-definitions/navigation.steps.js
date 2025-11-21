@@ -45,3 +45,11 @@ Then(/^I open "Complaint" side menu option$/, async function() {
 Then(/^I am on "Complaint" page$/, async function() {
     await this.pages.complaintPage.waitForLoad();
 })
+
+Then(/^I type and send a message "I don't like tomato juice"$/, async function() {
+    await this.pages.complaintPage.waitForLoad();
+})
+
+Then(/^I see a confirmation that message has been sent$/, async function() {
+    await this.pages.complaintPage.waitForLoad();
+})

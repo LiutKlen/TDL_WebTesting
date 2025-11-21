@@ -1,5 +1,5 @@
-const { $ } = require('@wdio/globals')
-const Page = require('./page');
+const { $ } = import('@wdio/globals')
+const Page = import('./page');
 
 /**
  * sub page containing specific selectors and methods for a specific page
