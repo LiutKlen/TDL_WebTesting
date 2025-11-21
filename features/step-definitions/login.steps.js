@@ -1,18 +1,17 @@
 import { Then } from '@wdio/cucumber-framework';
-import BasePage from '../pageobjects/base.page.js';
 import LoginPage from '../pageobjects/login.page.js';
+import BasePage from '../pageobjects/base.page.js';
 const loginPage = new LoginPage();
-
 const basePage = new BasePage();
 
 Then(/^I enter login email$/, async function() {
     await loginPage.inputEmail.waitForDisplayed();
-    await loginPage.inputEmail.setValue("arc@mailinator.com");
+    await loginPage.inputEmail.setValue("newmail25@mailinator.com");
 })
 
 Then(/^I enter login password$/, async function() {
     await loginPage.inputPassword.waitForDisplayed();
-    await loginPage.inputPassword.setValue("123456");
+    await loginPage.inputPassword.setValue("pppppp");
 })
 
 Then(/^I confirm login$/, async function() {

@@ -1,34 +1,38 @@
-import BasePage from "./base.page.js";
+import BasePage from "./base.page.js"
 export default class LoginPage extends BasePage {
     constructor() {
         super();
     }
 
-    get title(){
-        return browser.$(`//h1[text()="Login"]`);
+    get title() {
+        return browser.$('//h1[text()="Login"]');
     }
-    
+
     get inputEmail() {
-        return browser.$(`#email`);
+        return browser.$('#email');
     }
 
     get inputPassword() {
-        return browser.$(`#password`);
+        return browser.$('#password');
+    }
+
+    get buttonLogin() {
+        return browser.$('button#loginButton');
     }
 
     get linkForgotPassword() {
-        return browser.$(`.primary-link.forgot.pw`);
+        return browser.$('.primary-link.forgot-pw');
     }
 
     get checkboxLabelRememberMe() {
-        return browser.$(['for="rememberMe-input"]']);
+        return browser.$('[for="rememberMe-input"]');
     }
 
     get linkRegister() {
-        return browser.$(`[routerlink="/register"]`);
+        return browser.$('[routerlink="/register"]');
     }
 
-    async waitForLoad(email, password) {
+    async waitForLoad() {
         await this.title.waitForDisplayed();
         await this.inputEmail.waitForDisplayed();
         await this.inputPassword.waitForDisplayed();

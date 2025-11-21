@@ -1,35 +1,44 @@
-import SideMenu from "./side.menu.js";
+/**
+* main page object containing all methods, selectors and functionality
+* that is shared across all page objects
+*/
 
-export default class BasePage{
+import SideMenu from "./side.menu.js"
+
+export default class BasePage {
     constructor() {
         this.sideMenu = new SideMenu();
     }
 
     get buttonAccount() {
-        return browser.$(`#navbarAccount`);
+        return browser.$('#navbarAccount');
+        ////button[@id="navbarAccount"]
     }
 
     get buttonBasket() {
-        return browser.$(`[routerlink="/basket"]`);
+        return browser.$('[routerlink="/basket"]');
+        //button[@routerlink="/basket"]
     }
 
     get buttonLogin() {
-        return browser.$(`#navbarLoginButton`);
+        return browser.$('#navbarLoginButton');
+        //button[@id="navbarLoginButton"]
     }
 
-    get buttonSidenav() {
-        return browser.$(`[aria-label="Open Sidenav"]`);
-    }
-
-    get buttonDismissCookies() {
-        return browser.$(`[aria-label="dismiss cookie message"]`);
+    get buttonBurgerMenu() {
+        //button[@aria-label="Open Sidenav"]
+        return browser.$('[aria-label="Open Sidenav"]');
     }
 
     get buttonCloseWelcomeBanner() {
-        return browser.$(`[aria-label="Close Welcome Banner"]`);
+        return browser.$('[aria-label="Close Welcome Banner"]')
+    }
+
+    get buttonDismissCookies() {
+        return browser.$('[aria-label="dismiss cookie message"]');
     }
 
     get snackBarLanguageChange() {
-        return browser.$(`.mat-mdc-snack-bar-label.mdc-snackbar__label`);
+        return browser.$('.mat-mdc-snack-bar-label.mdc-snackbar__label');
     }
 }

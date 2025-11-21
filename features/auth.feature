@@ -1,24 +1,31 @@
 Feature: auth
-#empty feature
+This feature describes scenarios for login, registration etc
 
-
-Scenario: login
+@login @smoke @auth
+Scenario: Login
     Given I open landing page
-    And I click on account button
-    And I press login button
+    And I press on Account button
+    And I press on login button
     And I am on login page
-    When I enter login password
+    When I enter login email
+    And I enter login password
     And I confirm login
-    Then I should be logged in successfully
+    Then I am logged in
 
-Scenario: register a new user
+@register @auth
+Scenario: Register a new user
     Given I open landing page
-    And I click on account button
-    And I press login button
-    And I am on login page
-    When I press not yet a customer button
-    And I enter email adress
-    And I enter registration password
-    And I confirm registration password
-    And I confirm registration
-    Then I should be registered successfully
+    And I press on Account button
+    And I press on login button
+    When I press not yet a customer
+    And I enter email address
+    And I enter password
+    And I enter password repeatedly
+    And I select a question about elder sibling
+    And I write answer
+    And I press register button
+    Then I am on login page
+    When I enter login email
+    And I enter login password
+    And I confirm login
+    Then I am logged in

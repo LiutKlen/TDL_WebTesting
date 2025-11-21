@@ -1,10 +1,9 @@
 export default class SideMenu {
-constructor() {
-    //span@class = "mdc-list-item__content"']//span[noramlize-space(text())="Complaint"]
+    constructor() {
+        // Empty constructor
     }
 
     get sideMenuOption() {
-        return browser.$(`//span@class = "mdc-list-item__content"']//span[noramlize-space(text())="Complaint"]`);
+        return browser.$('//span[@class = "mdc-list-item__content"]//span[contains(text(),"Complaint")]');
     }
 }
-
