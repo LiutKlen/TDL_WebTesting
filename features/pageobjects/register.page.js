@@ -1,3 +1,4 @@
+import BasePage from './base.page.js';
 export default class RegisterPage extends BasePage{
     constructor() {
         super();

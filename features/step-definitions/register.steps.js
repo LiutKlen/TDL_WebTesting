@@ -18,14 +18,20 @@ Then(/^I enter password repeatedly$/, async function() {
 })
 
 Then(/^I select a question about elder sibling$/, async function() {
-    console.log("Step - I select a question about elder sibling")
+    await registerPage.selectSecurityQuestion.waitForDisplayed();
+    await registerPage.selectSecurityQuestion.click();
+    const element = await registerPage.securityQuestionOption("Your eldest siblings middle name?");
+    await element.waitForDisplayed();
+    await element.click();
 })
 
 Then(/^I write answer$/, async function() {
-    console.log("Step - I write answer")
+    await registerPage.inputAnswer.waitForDisplayed();
+    await registerPage.inputAnswer.setValue("pppppp");
 })
 
 Then(/^I press register button$/, async function() {
-    console.log("Step - I press register button")
+    await registerPage.buttonRegister.waitForDisplayed();
+    await registerPage.buttonRegister.click();
 })
     
