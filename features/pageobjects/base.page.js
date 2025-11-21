@@ -25,6 +25,10 @@ export default class BasePage {
         //button[@id="navbarLoginButton"]
     }
 
+    get buttonUserProfile() {
+        return browser.$('//button[@aria-label="Go to user profile"]');
+    }
+
     get buttonBurgerMenu() {
         //button[@aria-label="Open Sidenav"]
         return browser.$('[aria-label="Open Sidenav"]');

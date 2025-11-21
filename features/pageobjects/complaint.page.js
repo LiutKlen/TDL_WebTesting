@@ -1,32 +1,39 @@
 import BasePage from "./base.page.js";
 
-export default class ComplaintPage extends BasePage {
+export default class ComnplaintPage extends BasePage {
     constructor() {
-        super();
+        super()
     }
+
     get title() {
-        return browser.$('');
+        return browser.$('//h1[text()="Complaint"]');
     }
+
     get inputCustomerEmail() {
-        return browser.$('aria-label="Text field for the mail address of the user"]');
+        return browser.$('[aria-label="Text field for the mail address of the user"]');
     }
+
     get textAreaMessage() {
         return browser.$('#complaintMessage');
     }
+
     get attachment() {
         return browser.$('#file');
     }
+
     get buttonSubmit() {
-        return browser.$('submitButton');
+        return browser.$('#submitButton');
     }
+    
     get confirmationTextArea() {
-        return browser.$('//div[@class ="confirmation"][contains(text(), "Customer support will get in touch with you soon! Your complaint reference is")]');
+        return browser.$('//div[@class ="confirmation"]');
     }
-     async waitForLoad() {
+    
+    async waitForLoad() {
         await this.title.waitForDisplayed();
         await this.inputCustomerEmail.waitForDisplayed();
         await this.textAreaMessage.waitForDisplayed();
         await this.attachment.waitForDisplayed();
-        await this.buttonSubmit.waitForDisplayed(); 
+        await this.buttonSubmit.waitForDisplayed();
     }
 }

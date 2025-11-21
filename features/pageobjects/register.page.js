@@ -1,4 +1,4 @@
-import BasePage from './base.page.js';
+import BasePage from "./base.page.js";
 export default class RegisterPage extends BasePage{
     constructor() {
         super();
@@ -9,7 +9,7 @@ export default class RegisterPage extends BasePage{
     }
 
     get inputEmail(){
-        return browser.$('emailControl');
+        return browser.$('#emailControl');
     }
 
     get inputPassword(){
@@ -17,7 +17,7 @@ export default class RegisterPage extends BasePage{
     }
 
     get inputPasswordConfirm(){
-        return browser.$('repeatPasswordControl');
+        return browser.$('#repeatPasswordControl');
     }
 
     get switchShowPasswordAdvice(){
