@@ -46,7 +46,7 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 4,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -126,12 +126,25 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec','dot'],
+    reporters: [
+        'spec',
+        'dot',
+        ['allure',
+            {
+                outputDir: 'allure-results',
+                disableWebdriverStepsReporting: true,
+                useCucumberStepReporter: true,
+                disableWebdriverScreenshotsReporting: false,
+                addConsoleLogs: true
+            }
+        ]
+    ],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
         require: ['./features/**/*.js'],
+        format: [`json:./reports/json/results-${process.env.WDIO_WORKER_ID || 0}.json`],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -233,9 +246,11 @@ export const config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {object}                 context  Cucumber World object
      */
-    beforeScenario: function (world, context) {
+    beforeScenario: async function (world, context) {
         context.pages = new Pages();
         context.user = new User();
+        await browser.reloadSession();
+        await browser.setWindowSize(1920, 1060);
     },
     /**
      *

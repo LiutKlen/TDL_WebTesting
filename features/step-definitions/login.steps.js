@@ -38,4 +38,3 @@ Then(/^I see Go to profile button contains login email$/, async function() {
     await element.waitForDisplayed();
     await expect(element).toHaveText(expect.stringContaining(this.user.email))
 })
-

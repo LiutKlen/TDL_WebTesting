@@ -43,4 +43,8 @@ export default class RegisterPage extends BasePage{
     get linkLogin(){
         return browser.$('[routerlink="/login"]');
     }
+
+    async waitForLoad() {
+        await this.title.waitForLoad();
+    }
 }

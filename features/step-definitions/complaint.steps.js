@@ -1,8 +1,8 @@
 import { Then } from "@wdio/cucumber-framework"
 
-Then(/^I type and send message "I don't like tomato juice"$/, async function() {
+Then(/^I type and send message "(.*?)"$/, async function(message) {
     await this.pages.complaintPage.textAreaMessage.waitForDisplayed();
-    await this.pages.complaintPage.textAreaMessage.setValue("I don't like tomato juice");
+    await this.pages.complaintPage.textAreaMessage.setValue(message);
     await this.pages.complaintPage.buttonSubmit.waitForDisplayed();
     await this.pages.complaintPage.buttonSubmit.click();
 })

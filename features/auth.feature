@@ -1,8 +1,8 @@
 Feature: auth
 This feature describes scenarios for login, registration etc
 
-@login @smoke @auth
-Scenario: Login
+  @login @smoke @auth
+  Scenario: Login
     Given I open landing page
     And I press on Account button
     And I press on login button
@@ -14,8 +14,8 @@ Scenario: Login
     And I press on Account button
     And I see Go to profile button contains login email
 
-@register @auth
-Scenario: Register a new user
+  @register @auth
+  Scenario: Register a new user
     Given I open landing page
     And I press on Account button
     And I press on login button

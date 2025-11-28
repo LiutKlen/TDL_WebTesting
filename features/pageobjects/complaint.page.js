@@ -1,6 +1,6 @@
 import BasePage from "./base.page.js";
 
-export default class ComnplaintPage extends BasePage {
+export default class ComplaintPage extends BasePage {
     constructor() {
         super()
     }

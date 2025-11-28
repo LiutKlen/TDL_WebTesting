@@ -11,6 +11,7 @@ Then("I enter email address", async function() {
 Then(/^I enter password$/, async function() {
     await this.pages.registerPage.inputPassword.waitForDisplayed();
     this.user.password = faker.internet.password();
+    console.log("User password: " + this.user.password);
     await this.pages.registerPage.inputPassword.setValue(this.user.password);
 })
 

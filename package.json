@@ -1,5 +1,5 @@
 {
-  "name": "LiutaurasKl",
+  "name": "juiceShopJunior1125",
   "type": "module",
   "devDependencies": {
     "@wdio/cli": "^9.20.0",
@@ -10,9 +10,19 @@
     "wdio-wait-for": "^3.1.0"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "cucumber-reporter": "node cucumber-reporter.js",
+    "lint:js": "eslint .",
+    "lint:gherkin": "gherkin-lint ./features"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.1.0"
+    "@eslint/js": "^9.39.1",
+    "@faker-js/faker": "^10.1.0",
+    "@wdio/allure-reporter": "^9.20.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-wdio": "^9.16.2",
+    "gherkin-lint": "^4.2.4",
+    "multiple-cucumber-html-reporter": "^3.9.3"
   }
 }

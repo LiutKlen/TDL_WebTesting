@@ -46,31 +46,11 @@ export default class BasePage {
         return browser.$('.mat-mdc-snack-bar-label.mdc-snackbar__label');
     }
 
-    get buttonLanguageSelect(){
-        return browser.$('#navbarLanguageButton');
+    get buttonSearch() {
+        return browser.$('#searchQuery');
     }
 
-    get textAllProducts(){
-        return browser.$('[text()="All Products"]')
-    }
-
-    get buttonPageItems(){
-        return browser.$('[aria-labelledby="mat-paginator-page-size-label"]');
-    }
-
-    get itemsInPage(){
-        return browser.$('[aria-live="polite" and contains(@class,"mat-paginator-range-label")]');
-    }
-
-    get buttonNextPage(){
-        return browser.$('[aria-label="Next page"]');
-    }
-
-    get buttonPrevPage(){
-        return browser.$('[aria-label="Previous page"]');
-    }
-
-    get buttonPrevPage(){
-        return browser.$('[aria-label="Previous page"]');
+    get searchBar() {
+        return browser.$('#searchQuery input');
     }
 }

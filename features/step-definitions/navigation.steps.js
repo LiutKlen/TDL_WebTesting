@@ -19,10 +19,6 @@ Then(/^I press on login button$/, async function() {
     await this.pages.basePage.buttonLogin.click();
 })
 
-Then(/^I am on login page$/, async function() {
-    await this.pages.loginPage.waitForLoad();
-})
-
 Then(/^I press not yet a customer$/, async function() {
     await this.pages.loginPage.linkRegister.waitForDisplayed();
     await this.pages.loginPage.linkRegister.click();
@@ -37,19 +33,31 @@ Then(/^I open side menu$/, async function() {
     await this.pages.basePage.buttonBurgerMenu.click();
 })
 
-Then(/^I open "Complaint" side menu option$/, async function() {
-    await this.pages.basePage.sideMenu.sideMenuOption.waitForDisplayed();
-    await this.pages.basePage.sideMenu.sideMenuOption.click();
+Then(/^I open "(.*?)" side menu option$/, async function(option) {
+    const element = await this.pages.basePage.sideMenu.sideMenuOption(option);
+    await element.waitForDisplayed();
+    await element.click();
 })
 
-Then(/^I am on "Complaint" page$/, async function() {
-    await this.pages.complaintPage.waitForLoad();
+Then(/^I am on (.*?) page$/, async function(page) {
+    await this.pages[page].waitForLoad(page);
 })
 
-Then(/^I type and send a message "I don't like tomato juice"$/, async function() {
-    await this.pages.complaintPage.waitForLoad();
+Then(/^I see side menu options$/, async function(dataTable) {
+    for await (const line of dataTable.raw()) {
+        const element = await this.pages.basePage.sideMenu.sideMenuOption(line[0]);
+        await element.waitForDisplayed();
+    }
 })
 
-Then(/^I see a confirmation that message has been sent$/, async function() {
-    await this.pages.complaintPage.waitForLoad();
+Then(/^I do not see side menu options$/, async function(dataTable) {
+    for await (const line of dataTable.raw()) {
+        const element = await this.pages.basePage.sideMenu.sideMenuOption(line[0]);
+        await element.waitForExist({reverse: true});
+    }
+})
+
+Then(/^I open shopping basket$/, async function() {
+    await this.pages.basePage.buttonBasket.waitForDisplayed();
+    await this.pages.basePage.buttonBasket.click();
 })
